@@ -1,4 +1,4 @@
-//Omar, hi ha alguna cosa que falla i no trobo on.
+//Omar, hi ha alguna cosa que falla i no trobo on. 
 
 const { readdir, readFile, writeFile } = require("fs");
 const { join } = require("path");
@@ -47,4 +47,4 @@ async function main() {
     }
 }
 
-main();
+ main();
