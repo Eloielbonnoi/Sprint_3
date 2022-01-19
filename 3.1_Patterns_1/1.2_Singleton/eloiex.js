@@ -10,18 +10,10 @@ classe marcador amb patró singleton.
 Al main hi ha d'haver mètode crear jugador que invoqui la classe jugador i el seu constructor
 Al main mètode afegir i treure punts (potser 2 mètodes --> canvia marcador)
 */
-var jugadors = [
-    {
-        nom : "",
-        punts : 0
-    },
-    {
-        nom : "",
-        punts : 0
+
+class marcador {
+    static instancia;
+    constructor(){
+        this.resultat = [];
     }
-]
-
-jugadors[0]['nom'] = prompt('nom del jugador 1');
-jugadors[1]['nom'] = prompt('nom del jugador 2');
-
-console.log("aviam els noms: ", jugadors);
+}
