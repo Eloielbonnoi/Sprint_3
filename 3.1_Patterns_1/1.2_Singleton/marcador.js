@@ -16,7 +16,7 @@ class Marcador {
         if(Marcador.instancia){
             return Marcador.instancia;
         }
-        this._resultat = []; 
+        this._resultat = [0,0,0]; 
         Marcador.instancia = this;
     }
 
@@ -24,8 +24,11 @@ class Marcador {
     get resultat(){  //Retornarà un array amb els resultats
         return this._resultat;
     }
-}
 
-const marcador1 = new Marcador ()
-console.log(marcador1)
+    updateScores(arrayPlayers){
+    var arrScores= arrayPlayers.map(player=> player.score)
+    console.log(arrScores)
+    }
+}
+module.exports.Marcador = Marcador;
 

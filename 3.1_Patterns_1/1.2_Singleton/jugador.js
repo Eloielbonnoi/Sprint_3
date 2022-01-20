@@ -10,10 +10,11 @@ classe marcador amb patró singleton.
 Al main hi ha d'haver mètode crear jugador que invoqui la classe jugador i el seu constructor
 Al main mètode afegir i treure punts (potser 2 mètodes --> canvia marcador)
 */
-class Jugador {
+    class Jugador {
     constructor(name){
         this._name = name;
         this._score = 0;  //L'objecte s'inicia amb els punts a 0.
+        this._numTirades = 0;
     }
 
     get name(){
@@ -22,6 +23,9 @@ class Jugador {
     get score(){
         return this._score;
     }
+    get numTirades(){
+        return this._numTirades;
+    }
 
     set name(name){
         this._name = name;
@@ -29,10 +33,13 @@ class Jugador {
     set score(score){
         this._score = score;
     }
+
+    addScore(newScore){
+    return this._score += newScore
+    }
+    setNumTirades(){
+        this._numTirades += 1;
+    }
 }
 
-const jugador1 = new Jugador('Manel');
-//const nom = jugador1.name;
-console.log(jugador1.name)
- const newScore = jugador1.commit(_score, 1);
- console.log(newScore);
+module.exports.Jugador = Jugador;
