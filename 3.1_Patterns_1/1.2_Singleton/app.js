@@ -1,5 +1,6 @@
 /*
-PATRÓ SINGLETON
+PAT
+RÓ SINGLETON
 serveix per assegurar que una classe només és instanciada una vegada creant tan sols un objecte de la classe. Aquest té una accessibilitat global. 
 Se solen usar per 
 Construeix una aplicació que creï diversos Jugadors. Els jugadors podran ser afegits a un Joc, que mostrarà un marcador amb les puntuacions i el guanyador. 
