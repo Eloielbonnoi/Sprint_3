@@ -9,15 +9,6 @@ als valors abans del resultat final
 const data = require('./data')
 const Middleware = require('./Middleware');
 const middleware = new Middleware();
-//Operacions
-let suma = (num1, num2) => num1 + num2;
-let resta = (num1, num2) => num1 - num2;
-let multiplicacio = (num1, num2) => num1 * num2;
-
-let operand1 = data.data[randomNum(1, data.data.length)].num1;
-let operand2 = data.data[randomNum(1, data.data.length)].num2;
-const numSwitch = randomNum(1, 4)
-calcula(numSwitch, operand1, operand2);
 
 //Middleware
 middleware.use(function (num1, next) {
@@ -36,6 +27,20 @@ middleware.use(function(num1, num2, next) {
     console.log(`El resultat de dividir ${num1} entre ${num2} és ${resultat}`)
     next()
 });
+
+//Operacions
+let suma = (num1, num2) => num1 + num2;
+let resta = (num1, num2) => num1 - num2;
+let multiplicacio = (num1, num2) => num1 * num2;
+
+let operand1 = data.data[randomNum(1, data.data.length)].num1;
+let operand2 = data.data[randomNum(1, data.data.length)].num2;
+const numSwitch = randomNum(1, 4)
+middleware.executeMiddleware(operand1, operand2)
+calcula(numSwitch, operand1, operand2);
+
+
+
 
 console.log(middleware.middlewares)
 //Mètode switch operacions

@@ -3,25 +3,16 @@ class Middleware {
     constructor() {
         this.middlewares = []
     }
-
-    // get middlewares() {
-    //     return this.middlewares;
-    // }
-
-    //Mètode use reb una funció i l'afegeix a l'array
-
+    
     use(fn) {
         this.middlewares.push(fn);
     }
 
-    executeMiddleware(middlewares, data, next) {
-        this.middlewares.reduceRight((done, next) => () => next(data, done), done)
-            (data);
-    }
-    run(message) {
-        this.executeMiddleware(this.middlewares, message, function (msg, next) {
-            console.log('the initial message : ' + message);
-        });
-    }
+    executeMiddleware(num1, num2) {
+        this.middlewares.forEach(middleware => middleware(num1, num2));
+      } 
+      run(data) {
+        this.executeMiddleware(data, done => console.log(data));
+      }
 }
 module.exports = Middleware;
