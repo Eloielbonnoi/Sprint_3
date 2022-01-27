@@ -1,15 +1,16 @@
 "use strict";
 class Middleware {
     constructor() {
-        this.middlewares = []
+        this.middlewares = [];
     }
     
     use(fn) {
         this.middlewares.push(fn);
     }
 
-    executeMiddleware(num1, num2) {
-        this.middlewares.forEach(middleware => middleware(num1, num2));
+    executeMiddleware(data, done) {
+        this.middlewares.reduceRight((done, next)=>() =>next(data, done), done)
+        (data);
       } 
       run(data) {
         this.executeMiddleware(data, done => console.log(data));
