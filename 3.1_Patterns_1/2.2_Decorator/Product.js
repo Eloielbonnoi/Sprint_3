@@ -4,6 +4,9 @@ class Product {
         this.price = price,
         this.divisa = divisa
     }
+    getName(){
+        return this.name;
+    }
     getPrice(){
         return this.price;
     }

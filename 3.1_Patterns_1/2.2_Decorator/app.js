@@ -6,15 +6,34 @@ que usin el Decorator del punt anterior
 const Product = require('./Product');
 const DecoratedProduct = require('./DecoratedProduct');
 
+//Objectes
 const guitarra = new Product('Guitarra elèctrica', 1500, "USD");
-const plats = new Product('Plats Zildjian', 350, "CFH");
+const plat = new Product('Plats Zildjian', 8350, "Chf");
 const pedal = new Product('Pedal distortion', 380, "jpy");
-const pues = new Product('Púas', 3.75, "Cad");
+const pua = new Product('Púas', 3.75, "Cad");
+const bombo = new Product('Bombo', 788.75, "CNY");
 
-const materialGrup = [guitarra, plats, pedal, pues]
-console.log(pues.getPrice());
+const materialGrup = [guitarra, plat, pedal, pua, bombo];
 
+materialGrup.forEach((instrument => {
+    console.log(`El preu en ${instrument.getDivisa().toUpperCase()} de ${instrument.getName()} és de ${instrument.getPrice()}`)
+}
+))
+
+//Objectes decorats
 const guitarraDecorada = new DecoratedProduct(guitarra);
-console.log(pues.calculaPreu());
+const platDecorat = new DecoratedProduct(plat);
+const pedalDecorat = new DecoratedProduct(pedal);
+const puaDecorada = new DecoratedProduct(pua);
+const bomboDecorat =new DecoratedProduct(bombo);
+
+const materialGrupDecorated = [guitarraDecorada, bomboDecorat, platDecorat, pedalDecorat, puaDecorada]
+
+
+materialGrupDecorated.forEach((instrument => {
+    console.log(`El preu en € de ${instrument.getName()} és de ${instrument.getPrice()}`)
+}
+))
+
 
 
