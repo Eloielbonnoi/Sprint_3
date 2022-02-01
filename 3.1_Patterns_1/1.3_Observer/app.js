@@ -4,6 +4,7 @@ Quan un Usuari afegeixi un missatge a un Tema s'enviarà una alerta per la conso
 que estiguin subscrits al Tema (rebran el missatge). Crea un Tema amb un Usuari i un altre amb dos i mostra la recepció dels missatges pels usuaris. 
 Utilitza el mòdul events. tema = observable, users= observadors
 */
+//TODO està verd encara. Cal replantejar-lo tot.
 const observable =require('./Observable');
 const numberExample = require('./Subject');
 

@@ -18,7 +18,7 @@ class Tema {
 
     // Desuscribe la clase notificadora
     unsubscribe(c) {
-        this.observers = this.observers.filter(observer => observer instanceof c !== true);
+        this.observers = this.observers.filter(observer => observer instanceof c !== true);//filter(e=> e!=0);
     }
 
     // Llama a todos nuestros suscriptores
