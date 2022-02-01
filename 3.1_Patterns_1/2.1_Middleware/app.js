@@ -8,45 +8,28 @@ als valors abans del resultat final
 'use strict'
 const data = require('./data.json')
 const Middleware = require('./Middleware');
-const middleware = new Middleware();
 
-//Middleware
-middleware.use(function (num1, next) {
-    let resultat = Math.pow(num1, 2);
-    console.log(`El cuadrat de ${num1} és ${resultat}`)
-    next();
-});
+//Mètode get random number
+function randomNum(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
 
-middleware.use(function(num1, next) {
-    let resultat = Math.pow(num1, 3);
-    console.log(`El cub de ${num1} és ${resultat}`)
-    next();
-});
-middleware.use(function(num1, num2, next) {
-    let resultat = num1/num2;
-    console.log(`El resultat de dividir ${num1} entre ${num2} és ${resultat}`)
-    next()
-});
-
+//Valors per a operar
 let operand1 = data[randomNum(1, 4)].num1;
 let operand2 = data[randomNum(1, 4)].num2;
 const numSwitch = randomNum(1, 4)
-
-middleware.run(calcula(numSwitch, operand1, operand2));
-
-//console.log(middleware.middlewares)
 
 //Mètode switch operacions
 function calcula(num, operand1, operand2){
     let resultat;
 switch (num) {
     case 1:
-        resultat = operand1 + operand2;//suma(operand1, operand2);
+        resultat = operand1 + operand2; //suma(operand1, operand2);
         console.log(`La suma del valor ${operand1} i del valor ${operand2} dóna de resultat ${resultat}`);
         break;
     case 2:
         resultat = operand1 - operand2; //resta(operand1, operand2);
-        console.log(`La suma del valor ${operand1} menys el valor ${operand2} dóna de resultat ${resultat}`);
+        console.log(`La resta del valor ${operand1} menys el valor ${operand2} dóna de resultat ${resultat}`);
         break;
     case 3:
         resultat = operand1 * operand2; //multiplicacio(operand1, operand2);
@@ -57,25 +40,31 @@ switch (num) {
         break;
 }
 return resultat
-
 }
 
-//Mètode get random number
-function randomNum(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-}
+const middleware = new Middleware();
+
+//Middleware
+middleware.use(function (info, next) {
+    let resultat = Math.pow(operand1, 2);
+    console.log(`El cuadrat de ${operand1} és ${resultat}`)
+    next();
+});
+
+middleware.use(function(info, next) {
+    let resultat = Math.pow(operand1, 3);
+    console.log(`El cub de ${operand1} és ${resultat}`)
+    next();
+});
+middleware.use(function(info, next) {
+    let resultat = operand1/operand2;
+    console.log(`El resultat de dividir ${operand1} entre ${operand2} és ${resultat}`)
+    next()
+});
 
 
-//suma(data.data[0].num1, data.data[0].num2)
 
-//console.log(suma(data.data[0].num1, data.data[0].num2))
-//console.log(data.data[0].num1, data.data[0].num2)
+middleware.run(calcula(numSwitch, operand1, operand2));
 
+//console.log(middleware.middlewares)
 
-//Declaració operacions
-// const suma = (num1, num2) => num1 + num2;
-// const resta = (num1, num2) => num1 - num2;
-// const multiplicacio = (num1, num2) => num1 * num2;
-
-
-console.log(data[1].num1);
